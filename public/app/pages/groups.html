@@ -1,0 +1,45 @@
+<div class="container">
+    <button class="btn btn-block jumbo-button btn-info"></button>
+    <div class="jumbotron">
+        <h1>Create a Group</h1>
+        <form data-ng-submit="group.saveGroup()">
+
+            <div class="form-group">
+                <input type="text" maxlength="20" ng-model="group.groupData.name" placeholder="Creative Groupname" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" maxlength="60" ng-model="group.groupData.description" placeholder="Group Description" class="form-control">
+            </div>
+            <div class="alert alert-danger" ng-if="group.error">
+                {{ group.error }}
+            </div>
+            <button type="submit" class="btn btn-block btn-info">
+                <span>Create Group</span>
+            </button>
+        </form>
+        <div class="row show-hide-message" ng-show="group.message">
+            <div class="alert alert-info">
+                {{ group.message }}
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-block jumbo-button btn-warning"></button>
+    <div class="jumbotron">
+      <div class="form-group">
+        <input type="text" ng-model="searchText" class="form-control" placeholder="Group Search">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 box" ng-repeat="group in group.groups | filter:searchText">
+            <button class="btn btn-block" ng-class-odd="'btn-warning'" ng-class-even="'btn-info'"></button>
+            <div class="jumbotron">
+                <h4>{{group.name}}</h4>
+                <p >{{group.description}}</p>
+
+                <a class="btn btn-sm" ng-class-odd="'btn-warning'" ng-class-even="'btn-info'" ng-href="/group/{{group._id}}" role="button">Visit Group</a>
+
+            </div>
+        </div>
+    </div>
+
+</div>

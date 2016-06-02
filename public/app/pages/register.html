@@ -1,0 +1,30 @@
+<button class="btn btn-block jumbo-button btn-info"></button>
+  <div class="jumbotron">
+    <h1>Register</h1>
+    <form ng-submit = "user.saveUser()">
+      <div class="form-group">
+        <label> Name</label>
+        <input type="text" class="form-control" ng-model = "user.userData.name">
+      </div>
+      <div class="form-group">
+        <label> Username</label>
+        <input type="text" class="form-control" ng-model = "user.userData.username">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" ng-model = "user.userData.password">
+      </div>
+
+      <button type="submit" class = "btn btn-block btn-info">
+        <span>Login</span>
+      </button>
+
+    </form>
+    <div class="row show-hide-message" ng-show="user.message">
+    		<div class="alert alert-info">
+    			{{ user.message }}
+    		</div>
+
+    	</div>
+  </div>

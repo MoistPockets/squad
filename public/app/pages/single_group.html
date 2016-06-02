@@ -1,0 +1,35 @@
+<div class="container">
+    <button class="btn btn-block btn-info jumbo-button">
+        <span>Join</span>
+    </button>
+    <div class="jumbotron">
+        <h1>{{group.group.name}}</h1>
+        <form ng-submit="group.post()">
+            <div class="form-group">
+                <input type="text" ng-model="group.postData.body" placeholder="Quick Group Message" class="form-control input-lg">
+
+            </div>
+            <button type="submit" class="btn btn-block btn-info">
+                <span>Share With Group</span>
+            </button>
+        </form>
+        <div class="row show-hide-message" ng-show="group.message">
+            <div class="alert alert-info">
+                {{ group.message }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12" ng-repeat="post in group.group.posts | orderBy: '-created_at'">
+            <button ng-dblclick="group.deletePost(post._id)" class="btn btn-block jumbo-button" ng-class-odd="'btn-warning'" ng-class-even="'btn-info'"></button>
+            <div class="jumbotron">
+                <p class="lead">
+                    {{post.body}}</p>
+                <small class="pull-right">{{post.created_at | date: 'short'}}</small>
+                <small class="pull-left">{{post.author[0]}}</small>
+            </div>
+        </div>
+    </div>
+
+</div>

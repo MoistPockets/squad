@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base href="/" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Squad App || Richard M</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/app/css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-resource.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+        <script src="/app/app.js"></script>
+    </head>
+    <body data-ng-controller="mainController as main" data-ng-app="squadApp">
+        <div class="container">
+            <div class="header clearfix">
+                <nav>
+                    <!-- TODO: Add dynamic ng-class for active -->
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" >
+                            <a href="/">Home</a>
+                        </li>
+                        <li role="presentation" ng-if="!main.loggedIn">
+                            <a href="/login">Login</a>
+                        </li>
+                        <li role="presentation" ng-if="!main.loggedIn">
+                            <a href="/register">Register</a>
+                        </li>
+                        <li role="presentation" ng-if="main.loggedIn">
+                            <a href="/groups">Groups</a>
+                        </li>
+                        <li role="presentation" ng-if="main.loggedIn">
+                            <a href="" ng-click="main.doLogout()">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+                <h3 class="text-muted">Squad App // {{main.user.username}}</h3>
+            </div>
+            <div id="main">
+              <div ng-view></div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </body>
+</html>
